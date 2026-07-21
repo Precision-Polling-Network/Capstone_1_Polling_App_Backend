@@ -1,11 +1,7 @@
 const {DataTypes, STRING, INTERGER} = require('sequelize');
 const db = require('../data/db')
-const Poll = db.define('poll', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
+const Polls = db.define('poll', 
+  {
   title: {
     type: DataTypes.STRING,
     allowNull: false
