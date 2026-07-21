@@ -1,14 +1,12 @@
-const Votes = require('./Votes.js')
-const Options = require('./Options.js')
-const Polls = require('./Polls.js')
+const Vote = require('./Vote.js')
+const Option = require('./Option.js')
+const Poll = require('./Poll.js')
+
+Poll.hasMany(Option);
+Option.belongsTo(Poll);
+Option.hasMany(Vote);
+Vote.belongsTo(Option);
 
 
-Polls.hasMany(Options)
-Options.belongsTo(Polls)
-
-Options.hasMany(Votes)
-Votes.belongsTo(Options)
-
-
-module.exports = { db, Options, Polls, Votes }
+module.exports = { db, Option, Poll, Vote }
 

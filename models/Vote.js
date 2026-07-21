@@ -1,10 +1,7 @@
-const {DataTypes, STRING, INTERGER} = require('sequelize');
+const {DataTypes} = require('sequelize');
 const db = require('../data/db')
-const Votes = db.define('votes', {
-  text: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
+const Vote = db.define('votes', {
+ 
 });
 
 
