@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const PORT = 8080;
 const { db } = require("./models");
+const pollRouter = require("./routes/Polls");
 
 // const Option = require('./models/Options')
 // const Polls = require('./models/Polls')
 // const Votes = require('./models/Votes')
 
-
 app.use(express.json());
+
 
 async function startApp() {
     await db.sync({alter: true});
