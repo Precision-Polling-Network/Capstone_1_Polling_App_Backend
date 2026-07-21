@@ -1,4 +1,4 @@
-const { db, Polls, Options, Votes } = require("./models");
+const { db, Poll, Option, Vote } = require("./models");
 
 async function seed() {
   await db.sync({force: true});
@@ -23,8 +23,8 @@ async function seed() {
     { text: "Soccer" },
     { text: "Football" },
   ];
-  await Polls.bulkCreate(polls);
-  await Options.bulkCreate(options);
+  await Poll.bulkCreate(polls);
+  await Option.bulkCreate(options);
   console.log("Seeded");
   process.exit();
 }
