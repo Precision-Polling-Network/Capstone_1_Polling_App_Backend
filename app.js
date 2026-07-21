@@ -11,7 +11,8 @@ const { db } = require("./models");
 app.use(express.json());
 
 async function startApp() {
-    await db.sync()
+    await db.sync({alter: true});
+
     app.listen(PORT, () => {
         console.log(`Server is running on ${PORT}`);
     });
