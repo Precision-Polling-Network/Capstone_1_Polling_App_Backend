@@ -1,3 +1,4 @@
+const db = require('../data/db.js')
 const Vote = require('./Vote.js')
 const Option = require('./Option.js')
 const Poll = require('./Poll.js')
