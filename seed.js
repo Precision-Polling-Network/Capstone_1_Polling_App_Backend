@@ -16,12 +16,12 @@ async function seed() {
   ];
 
   const options = [
-    { text: "C++" },
-    { text: "JavaScript" },
-    { text: "Movies" },
-    { text: "Shows" },
-    { text: "Soccer" },
-    { text: "Football" },
+    { text: "C++", pollId: 1 },
+    { text: "JavaScript", pollId: 1 },
+    { text: "Movies" , pollId: 2},
+    { text: "Shows" , pollId: 2},
+    { text: "Soccer" , pollId: 3},
+    { text: "Football" , pollId: 3},
   ];
   await Poll.bulkCreate(polls);
   await Option.bulkCreate(options);
