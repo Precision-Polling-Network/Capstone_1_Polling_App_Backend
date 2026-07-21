@@ -1,6 +1,6 @@
 const {DataTypes, STRING, INTERGER} = require('sequelize');
 const db = require('../data/db')
-const Polls = db.define('poll', 
+const Poll = db.define('poll', 
   {
   title: {
     type: DataTypes.STRING,
