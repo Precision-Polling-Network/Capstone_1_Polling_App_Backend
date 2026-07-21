@@ -1,6 +1,6 @@
 const {DataTypes, STRING, INTERGER} = require('sequelize');
 const db = require('../data/db')
-const Polls = db.define('poll', {
+const Poll = db.define('poll', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -17,4 +17,4 @@ const Polls = db.define('poll', {
 });
 
 
-module.exports = Polls;
+module.exports = Poll;

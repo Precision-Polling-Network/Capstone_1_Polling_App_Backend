@@ -1,7 +1,6 @@
-const {DataTypes} = require('sequelize');
+const {DataTypes, STRING, INTERGER} = require('sequelize');
 const db = require('../data/db')
-
-const Options = db.define('option', {
+const Vote = db.define('votes', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -13,4 +12,5 @@ const Options = db.define('option', {
   }
 });
 
-module.exports = Options;
+
+module.exports = Vote;
