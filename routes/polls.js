@@ -12,12 +12,13 @@ router.get("/", async (req, res) => {
 // POST /polls — create a new poll with its options
 router.post("/", async (req, res) => {
     const {title,description, options} = req.body
-    // const poll = await Poll.create({title,description}, {include: Option});
-    const poll = await Poll.create({title,description});
+    const poll = await Poll.create({title,description, options},{
+        include: [Option]
+    });
     console.log(poll.id)
-    for(let i = 0; i< options.length; i++){
-        await Option.create({text: options[i].text, pollId: poll.id  })
-    }
+    // for(let i = 0; i< options.length; i++){
+    //     await Option.create({text: options[i].text, pollId: poll.id  })
+    // }
     res.status(201).json(poll);
 })
     // test it out, we need to put below code into the in postman req.body.
@@ -33,22 +34,22 @@ router.post("/", async (req, res) => {
 //end
 
 
-// // GET /polls/:id — return a single poll with its options and vote counts
-// router.get("/:id", async (req,res) => {
-//     const poll = await Poll.findByPk(req.params.id, {
-//         include: [
-//             {
-//                 model:Option,
-//                 include: [Vote]
-//             }
-//         ]
-//     })
-// })
+// GET /polls/:id — return a single poll with its options and vote counts
+router.get("/:id", async (req,res) => {
+    const id = Number(req.params.id);
+    const poll = await Poll.findByPk(id, {include: Option });
+    res.json(poll);
+})
 
 // //POST /polls/:id/vote — submit a vote for an option
-// router.post("/:id/vote", async (req,res) => {
-//     const { optionId } = req.body;
-// })
+router.post("/:id/vote", async (req, res) => {
+    const {title,description, options,} = req.body;
+    const id = Number(req.params.id);  
+    const option = await Option.findByPk(id)
+    // const vote = await Vote.create({optionId: option.id});
+        // await Option.create({text: options[i].text, pollId: poll.id  })
+    res.status(201).json(option);
+})
 
 
 
