@@ -5,17 +5,24 @@ const { db } = require("./models");
 const pollRouter = require("./routes/polls");
 const cors = require("cors")
 const morgan = require("morgan")
-// const Option = require('./models/Options')
-// const Polls = require('./models/Polls')
-// const Votes = require('./models/Votes')
 
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use("/polls", pollRouter)
 
+app.use(logger);
+app.use(errorHandler);
 
+async function logger(req, res, next){
+    console.log('>>>Logging request method', req.method, req.originalUrl)
+    next()
+}
 
+async function errorHandler(err, req, res, next){
+    await console.log(">>>>>>>Error Message: ", err.message);
+    res.status(500).json({Error: "Something Went Wrong"})
+}
 async function startApp() {
     await db.sync();
 
