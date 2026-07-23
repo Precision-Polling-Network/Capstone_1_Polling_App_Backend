@@ -13,7 +13,9 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const id = Number(req.params.id);
-    const poll = await Poll.findByPk(id, { include: Option });
+    const poll = await Poll.findByPk(id, {
+      include: { model: Option, include: Vote },
+    });
     res.json(poll);
   } catch (err) {
     next(err);
