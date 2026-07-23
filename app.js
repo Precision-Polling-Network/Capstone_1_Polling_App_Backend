@@ -8,10 +8,10 @@ const morgan = require("morgan");
 
 app.use(express.json());
 app.use(cors());
-app.use(morgan());
+app.use(morgan("dev"));
+app.use("/polls", pollRouter)
 
 app.use(logger);
-app.use("/polls", pollRouter);
 app.use(errorHandler);
 
 async function logger(req, res, next) {
@@ -25,7 +25,7 @@ async function errorHandler(err, req, res, next) {
   res.status(500).json({ Error: "Something Went Wrong" });
 }
 async function startApp() {
-  await db.sync({ alter: true });
+    await db.sync();
 
   app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
